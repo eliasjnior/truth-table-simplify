@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/truth-table-simplify/precache-manifest.2af9afc3a00acdd8b3bba48ce67323c0.js"
+  "/truth-table-simplify/precache-manifest.1d2229a6f1c8749ca1c3041fbab96c79.js"
 );
 
 self.addEventListener('message', (event) => {
