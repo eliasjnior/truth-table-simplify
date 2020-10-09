@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/truth-table-simplify/static/css/main.12d3dcfc.chunk.css",
+    "main.js": "/truth-table-simplify/static/js/main.b0fc5629.chunk.js",
+    "main.js.map": "/truth-table-simplify/static/js/main.b0fc5629.chunk.js.map",
+    "runtime-main.js": "/truth-table-simplify/static/js/runtime-main.ac7fc205.js",
+    "runtime-main.js.map": "/truth-table-simplify/static/js/runtime-main.ac7fc205.js.map",
+    "static/js/2.1d8f8cdc.chunk.js": "/truth-table-simplify/static/js/2.1d8f8cdc.chunk.js",
+    "static/js/2.1d8f8cdc.chunk.js.map": "/truth-table-simplify/static/js/2.1d8f8cdc.chunk.js.map",
+    "index.html": "/truth-table-simplify/index.html",
+    "precache-manifest.2af9afc3a00acdd8b3bba48ce67323c0.js": "/truth-table-simplify/precache-manifest.2af9afc3a00acdd8b3bba48ce67323c0.js",
+    "service-worker.js": "/truth-table-simplify/service-worker.js",
+    "static/css/main.12d3dcfc.chunk.css.map": "/truth-table-simplify/static/css/main.12d3dcfc.chunk.css.map",
+    "static/js/2.1d8f8cdc.chunk.js.LICENSE.txt": "/truth-table-simplify/static/js/2.1d8f8cdc.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ac7fc205.js",
+    "static/js/2.1d8f8cdc.chunk.js",
+    "static/css/main.12d3dcfc.chunk.css",
+    "static/js/main.b0fc5629.chunk.js"
+  ]
+}
