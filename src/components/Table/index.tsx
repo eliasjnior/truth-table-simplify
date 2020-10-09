@@ -102,7 +102,7 @@ const Table: React.FC = () => {
                 {keys[column]}
               </th>
             ))}
-            <th className="border px-4 py-2">Result</th>
+            <th className="border px-4 py-2 bg-gray-200">Result</th>
           </tr>
         </thead>
         <tbody>
@@ -119,8 +119,10 @@ const Table: React.FC = () => {
                   {getBinValue(row, columns)[column] === '1' ? 'TRUE' : 'FALSE'}
                 </td>
               ))}
-              <td className="border px-4 py-2">
+              <td className={getCellClassName('border px-4 py-2', values[row])}>
                 <select
+                  className="w-full p-2 bg-transparent outline-none"
+                  value={values[row] ? 'TRUE' : 'FALSE'}
                   onChange={(e) => updateValue(row, e.target.value === 'TRUE')}
                 >
                   <option value="FALSE">FALSE</option>
