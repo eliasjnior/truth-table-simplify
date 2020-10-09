@@ -17,6 +17,30 @@ const Table: React.FC = () => {
     () => Array.from(Array(rows)).map((value, key) => key),
     [rows],
   )
+  const conditional = useMemo(
+    () =>
+      Array.from(values)
+        .map((rowValue, rowKey) => {
+          const binary = getBinValue(rowKey, columns)
+
+          return {
+            binary,
+            group: `( ${Array.from(binary)
+              .map((groupValue, groupKey) =>
+                groupValue === '1' ? keys[groupKey] : `!${keys[groupKey]}`,
+              )
+              .join(' && ')} )`,
+            value: rowValue,
+          }
+        })
+        .filter((it) => it.value),
+    [values, columns],
+  )
+
+  const parsedConditional = useMemo(
+    () => conditional.map((it) => it.group).join(' || '),
+    [conditional],
+  )
 
   const getCellClassName = useCallback(
     (commonClassName, value) =>
@@ -101,6 +125,13 @@ const Table: React.FC = () => {
       >
         Add column
       </button>
+
+      <div
+        className="text-center bg-blue-500 text-white text-lg p-4"
+        role="alert"
+      >
+        {parsedConditional || `Result will always be FALSE.`}
+      </div>
     </div>
   )
 }
