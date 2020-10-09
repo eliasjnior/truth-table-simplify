@@ -3,10 +3,11 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { getBinValue } from '~/helpers/binary'
 
 const Table: React.FC = () => {
-  const [values, setValues] = useState<Array<boolean>>([])
-
   const keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-  const columns = 3
+
+  const [values, setValues] = useState<Array<boolean>>([])
+  const [columns, setColumns] = useState<number>(3)
+
   const columnsArr = useMemo(
     () => Array.from(Array(columns)).map((value, key) => key),
     [columns],
@@ -31,6 +32,14 @@ const Table: React.FC = () => {
 
       return newArr
     })
+  }, [])
+
+  const removeColumn = useCallback(() => {
+    setColumns((oldColumns) => Math.max(2, oldColumns - 1))
+  }, [])
+
+  const addColumn = useCallback(() => {
+    setColumns((oldColumns) => oldColumns + 1)
   }, [])
 
   useEffect(() => {
@@ -78,6 +87,20 @@ const Table: React.FC = () => {
           ))}
         </tbody>
       </table>
+
+      <button
+        className="my-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+        onClick={removeColumn}
+      >
+        Remove column
+      </button>
+
+      <button
+        className="my-4 ml-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        onClick={addColumn}
+      >
+        Add column
+      </button>
     </div>
   )
 }
