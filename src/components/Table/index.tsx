@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { getBinValue } from '~/helpers/binary'
 
+import './conditional.css'
+
 const Table: React.FC = () => {
   const keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
@@ -40,6 +42,24 @@ const Table: React.FC = () => {
   const parsedConditional = useMemo(
     () => conditional.map((it) => it.group).join(' || '),
     [conditional],
+  )
+
+  const htmlParsedConditional = useMemo(
+    () =>
+      parsedConditional
+        .replace(/\|\|/g, '<span class="conditional-or">||</span>')
+        .replace(/\(/g, '<span class="conditional-parentheses">(</span>')
+        .replace(/\)/g, '<span class="conditional-parentheses">)</span>')
+        .replace(/&&/g, '<span class="conditional-and">&&</span>'),
+    [parsedConditional],
+  )
+
+  const simplifiedUri = useMemo(
+    () =>
+      `https://www.wolframalpha.com/input/?i=${encodeURIComponent(
+        parsedConditional,
+      )}`,
+    [parsedConditional],
   )
 
   const getCellClassName = useCallback(
@@ -130,8 +150,24 @@ const Table: React.FC = () => {
         className="text-center bg-blue-500 text-white text-lg p-4"
         role="alert"
       >
-        {parsedConditional || `Result will always be FALSE.`}
+        <p
+          dangerouslySetInnerHTML={{
+            __html: htmlParsedConditional || `Result will always be FALSE.`,
+          }}
+        />
       </div>
+
+      {parsedConditional && (
+        <div className="my-5 text-center">
+          <a
+            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+            target="blank"
+            href={simplifiedUri}
+          >
+            Simplify
+          </a>
+        </div>
+      )}
     </div>
   )
 }
