@@ -83,7 +83,7 @@ const Table: React.FC = () => {
   }, [])
 
   const addColumn = useCallback(() => {
-    setColumns((oldColumns) => oldColumns + 1)
+    setColumns((oldColumns) => Math.min(keys.length, oldColumns + 1))
   }, [])
 
   useEffect(() => {
