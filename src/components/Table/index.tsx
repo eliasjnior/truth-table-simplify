@@ -5,7 +5,7 @@ import { getBinValue } from '~/helpers/binary'
 import './conditional.css'
 
 const Table: React.FC = () => {
-  const keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  const keys = 'ABCDE'
 
   const [values, setValues] = useState<Array<boolean>>([])
   const [columns, setColumns] = useState<number>(3)
